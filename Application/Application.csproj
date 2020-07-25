@@ -1,16 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>979d7cfe-9769-40ab-bb0a-a1f68541a9d3</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="MediatR" Version="8.0.2" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.csproj" />
   </ItemGroup>
-
 </Project>

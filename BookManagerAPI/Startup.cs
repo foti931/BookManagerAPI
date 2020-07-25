@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Application.Books;
+using MediatR;
+using System;
 
 namespace BookManagerAPI
 {
@@ -20,11 +23,32 @@ namespace BookManagerAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(opt =>
+            try
             {
-                //opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
-            });
-            services.AddControllers();
+                services.AddDbContext<DataContext>(opt =>
+                {
+                    var connection = Configuration.GetConnectionString("MysqlConnection");
+                    if (connection == null)
+                        throw new Exception("ConnectionèÓïÒÇ™ìoò^Ç≥ÇÍÇƒÇ¢Ç‹ÇπÇÒÅB");
+
+                    var password = Configuration["DbPassword"];
+                    if (password == null)
+                        throw new Exception("DBê⁄ë±ÉpÉXÉèÅ[ÉhÇ™ìoò^Ç≥ÇÍÇƒÇ¢Ç‹ÇπÇÒÅB");
+
+                    connection = string.Format(connection, password);                    
+                    opt.UseMySql(connection);
+                });
+
+                services.AddMediatR(typeof(List.Handler).Assembly);
+                services.AddControllers();
+
+            }
+            catch (Exception)
+            {
+                
+
+                return;
+            }        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

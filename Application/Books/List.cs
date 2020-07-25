@@ -1,8 +1,5 @@
 ﻿using MediatR;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Domain;
 using System.Threading.Tasks;
 using System.Threading;
@@ -19,7 +16,6 @@ namespace Application.Books
 
         public class Handler : IRequestHandler<Query, List<Book>>
         {
-
             private readonly DataContext _context;
 
             public Handler(DataContext context)

@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookManagerAPI", "BookManag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{4D884B62-9D6B-4390-8F5D-D823018DAB0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{11010E90-9D7C-453E-949D-7851D9C6CEDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{11010E90-9D7C-453E-949D-7851D9C6CEDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{687DB272-3A59-41DF-95BA-D526BF360DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{687DB272-3A59-41DF-95BA-D526BF360DAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{88628234-022C-46AF-B4B0-62CBE675901B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{687DB272-3A59-41DF-95BA-D526BF360DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687DB272-3A59-41DF-95BA-D526BF360DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687DB272-3A59-41DF-95BA-D526BF360DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88628234-022C-46AF-B4B0-62CBE675901B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88628234-022C-46AF-B4B0-62CBE675901B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88628234-022C-46AF-B4B0-62CBE675901B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88628234-022C-46AF-B4B0-62CBE675901B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
