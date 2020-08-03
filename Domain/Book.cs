@@ -13,5 +13,7 @@ namespace Domain
         public string Detail { get; set; }
 
         public string Other { get; set; }
+
+        public string JAN { get; set; }
     }
 }

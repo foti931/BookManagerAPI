@@ -26,29 +26,26 @@ namespace BookManagerAPI
             try
             {
                 services.AddDbContext<DataContext>(opt =>
-                {
-                    var connection = Configuration.GetConnectionString("MysqlConnection");
-                    if (connection == null)
-                        throw new Exception("Connection情報が登録されていません。");
+               {
+                   var connection = Configuration.GetConnectionString("MysqlConnection");
+                   if (connection == null)
+                       throw new Exception("Connection情報が登録されていません。");
 
-                    var password = Configuration["DbPassword"];
-                    if (password == null)
-                        throw new Exception("DB接続パスワードが登録されていません。");
+                   var password = Configuration["DbPassword"];
+                   if (password == null)
+                       throw new Exception("DB接続パスワードが登録されていません。");
 
-                    connection = string.Format(connection, password);                    
-                    opt.UseMySql(connection);
-                });
+                   connection = string.Format(connection, password);
+                   opt.UseMySql(connection);
+               });
 
                 services.AddMediatR(typeof(List.Handler).Assembly);
                 services.AddControllers();
-
             }
             catch (Exception)
             {
-                
-
                 return;
-            }        
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

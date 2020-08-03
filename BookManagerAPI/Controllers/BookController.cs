@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using Application.Books;
 using Domain;
 using API.Controllers;
+using System;
+using MediatR;
 
 namespace BookManagerAPI.Controllers
 {
@@ -22,7 +24,15 @@ namespace BookManagerAPI.Controllers
         [HttpGet]
         public async Task<List<Book>> Get()
         {
+            _logger.LogInformation("Book/Get");
             return await Mediator.Send(new List.Query());
+        }
+
+        [HttpPost]
+        public async Task<Unit> Register()
+        {
+            _logger.LogInformation("Book/Create");
+            return await Mediator.Send(new Create.Command());
         }
     }
 }

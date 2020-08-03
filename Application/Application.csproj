@@ -5,7 +5,7 @@
     <UserSecretsId>979d7cfe-9769-40ab-bb0a-a1f68541a9d3</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="8.0.2" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
