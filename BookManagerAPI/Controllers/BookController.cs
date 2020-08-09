@@ -5,13 +5,11 @@ using Microsoft.Extensions.Logging;
 using Application.Books;
 using Domain;
 using API.Controllers;
-using System;
 using MediatR;
 
 namespace BookManagerAPI.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class BookController : BaseController
     {
         private readonly ILogger<BookController> _logger;
@@ -29,10 +27,10 @@ namespace BookManagerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<Unit> Register()
+        public async Task<Unit> Register(Create.Command command)
         {
-            _logger.LogInformation("Book/Create");
-            return await Mediator.Send(new Create.Command());
+            _logger.LogInformation("Book/Register");
+            return await Mediator.Send(command);
         }
     }
 }

@@ -5,10 +5,8 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
-
-
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class BaseController : ControllerBase
     {
         private IMediator _mediator;
