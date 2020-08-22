@@ -42,7 +42,9 @@ namespace Application.Books
                     Detail = request.Detail,
                     Gerne = request.Gerne,
                     JAN = request.JAN,
-                    Other = request.Other
+                    Other = request.Other,
+                    InsTime = DateTime.Now,
+                    UpdTime = DateTime.Now,
                 };
 
                 _context.Books.Add(book);
