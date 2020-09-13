@@ -7,7 +7,7 @@ namespace Domain
     public class Book
     {
         [Required]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [NotNull]
         public string Title { get; set; }
 

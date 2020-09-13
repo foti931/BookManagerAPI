@@ -2,9 +2,8 @@
 
 namespace Common
 {
-    public static class Consts
+    public static class Constants
     {
-
 
     }
 }
