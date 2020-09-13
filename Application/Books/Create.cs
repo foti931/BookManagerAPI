@@ -11,7 +11,7 @@ namespace Application.Books
     {
         public class Command : IRequest
         {
-            public int Id { get; set; }
+            public string Id { get; set; }
 
             public string Title { get; set; }
 
@@ -35,7 +35,7 @@ namespace Application.Books
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                Book book = new Book
+                Domain.Book book = new Domain.Book
                 {
                     Id = request.Id,
                     Title = request.Title,
