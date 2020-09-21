@@ -8,6 +8,7 @@ using Persistence;
 using Application.Books;
 using MediatR;
 using System;
+using FluentValidation.AspNetCore;
 
 namespace BookManagerAPI
 {
@@ -27,24 +28,28 @@ namespace BookManagerAPI
             {
                 services.AddDbContext<DataContext>(opt =>
                {
-                   var connection = Configuration.GetConnectionString("MysqlConnection");
+                   var connection = Configuration.GetConnectionString(Common.Constants.CONNECTION_NAME);
                    if (connection == null)
-                       throw new Exception("Connectionî•ñ‚ª“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                       throw new Exception(Common.CommonMessages.ExceptionMessage.CONNECTION_INFO_NOT_FOUND);
 
-                   var password = Configuration["DbPassword"];
+                   var password = Configuration[Common.Constants.CONNECTION_PASSWORD];
                    if (password == null)
-                       throw new Exception("DBÚ‘±ƒpƒXƒ[ƒh‚ª“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                       throw new Exception(Common.CommonMessages.ExceptionMessage.CONNECTION_PASSWORD_NOT_FOUND);
 
                    connection = string.Format(connection, password);
                    opt.UseMySql(connection);
                });
 
                 services.AddMediatR(typeof(List.Handler).Assembly);
-                services.AddControllers();
+                services.AddControllers()
+                    .AddFluentValidation(cfg =>
+                    {
+                        cfg.RegisterValidatorsFromAssemblyContaining<Create>();
+                    });
             }
             catch (Exception)
             {
-                return;
+                throw;
             }
         }
 

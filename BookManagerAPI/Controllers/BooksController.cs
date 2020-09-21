@@ -17,17 +17,18 @@ namespace BookManagerAPI.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public async Task<List<Domain.Book>> Books()
         {
-            _logger.LogInformation("get:api/books");
+            _logger.LogInformation($"get:api/book");
             return await Mediator.Send(new List.Query());
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<Domain.Book> Books(string id)
         {
-            _logger.LogInformation($"get:api/books/{id}");
-            return await Mediator.Send(new Application.Books.Book.Query() { ID = id });
+            _logger.LogInformation($"get:api/book/{id}");
+            return await Mediator.Send(new Book.Query() { ID = id });
         }
 
         [HttpPost]

@@ -6,21 +6,25 @@ using System.Text;
 
 namespace Domain
 {
-    public class User
+    /// <summary>
+    /// 所有情報
+    /// </summary>
+    public class OwnedBookInfo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        [Required]
-        public string UserName { get; set; }
-        [Required]
-        public string UserPass { get; set; }
-        public DateTime? LastLoggedIn { get; set; }
+        [ForeignKey("Book")]
+        public int BookId { get; set; }
+
+        [ForeignKey("User")]
+        public int UserId { get; set; }
         [Required]
         public DateTime InsTime { get; set; }
         [Required]
         public DateTime UpdTime { get; set; }
+
+        public Book Book { get; set; }
+        public User User { get; set; }
     }
 }

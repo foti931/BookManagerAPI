@@ -24,9 +24,9 @@ namespace Application.Books
 
             public async Task<Domain.Book> Handle(Query request, CancellationToken cancellationToken)
             {
-                var id = request.ID;
-                var book = await _context.Books.FirstAsync(x => x.Id == id);
-                return book;
+                var id = int.Parse(request.ID);
+                var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+                return book ?? new Domain.Book();
             }
         }
     }

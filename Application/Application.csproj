@@ -5,6 +5,7 @@
     <UserSecretsId>979d7cfe-9769-40ab-bb0a-a1f68541a9d3</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
     <PackageReference Include="MediatR" Version="8.1.0" />
   </ItemGroup>
   <ItemGroup>

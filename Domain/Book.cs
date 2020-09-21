@@ -1,28 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain
 {
+    [Description("本")]
     public class Book
     {
-        [Required]
-        public string Id { get; set; }
-        [NotNull]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public int Id { get; set; }
+        [MaxLength(13)]
+        public string JanCode1 { get; set; }
+        [MaxLength(13)]
+        public string JanCode2 { get; set; }
+        [MaxLength(15)]
+        public string IsbnCode { get; set; }
+        [MaxLength(200)]
         public string Title { get; set; }
-
-        public string Gerne { get; set; }
-
-        public string Detail { get; set; }
-
-        public string Other { get; set; }
-        [NotNull]
-        public string JAN { get; set; }
-        [NotNull]
-        public bool IsRental { get; set; }
-        [NotNull]
+        [Required]
         public DateTime InsTime { get; set; }
-        [NotNull]
-        public DateTime UpdTime { get; set; }   
+        [Required]
+        public DateTime UpdTime { get; set; }
+
+        /// <summary>
+        /// 所有情報
+        /// </summary>
+        public List<OwnedBookInfo> OwnedBooks { get; set; }
     }
 }

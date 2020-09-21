@@ -1,4 +1,5 @@
 ﻿using Domain;
+using FluentValidation;
 using MediatR;
 using Persistence;
 using System;
@@ -24,6 +25,14 @@ namespace Application.Books
             public string JAN { get; set; }
         }
 
+        public class CmmandValidator : AbstractValidator<Command>
+        {
+            public CmmandValidator()
+            {
+
+            }
+        }
+
         public class Handler : IRequestHandler<Command>
         {
             private readonly DataContext _context;
@@ -37,12 +46,7 @@ namespace Application.Books
             {
                 Domain.Book book = new Domain.Book
                 {
-                    Id = request.Id,
                     Title = request.Title,
-                    Detail = request.Detail,
-                    Gerne = request.Gerne,
-                    JAN = request.JAN,
-                    Other = request.Other,
                     InsTime = DateTime.Now,
                     UpdTime = DateTime.Now,
                 };
